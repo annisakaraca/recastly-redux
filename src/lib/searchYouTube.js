@@ -5,14 +5,14 @@ var searchYouTube = ({key, query, max = 5}, callback) => {
     q: query,
     maxResults: max,
     type: 'video',
-    videoEmbeddable: 'true'
+    videoEmbeddable: 'true',
   })
     .done(({items}) => {
       if (callback) {
         callback(items);
       }
     })
-    .fail(({responseJSON}) => {
+    .fail((error) => {
       responseJSON.error.errors.forEach((err) =>
         console.error(err)
       );
